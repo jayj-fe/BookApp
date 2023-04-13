@@ -6,7 +6,7 @@ function MovieList() {
 
     const fetchEvents = async () => {
         const key = "?key=16d81e34d9d4771fed4235c4db599c1c" // key 앞에 <?key=>를 붙여야함 : prameter
-        const itemPerPage = "&itemPerPage=20" //20개를 가져올것이라서
+        // const itemPerPage = "&itemPerPage=20" //20개를 가져올것이라서
         
         const today = new Date();
         const yesterday = new Date(today.setDate(today.getDate() - 1));
@@ -18,14 +18,18 @@ function MovieList() {
         const targetDt = "&targetDt=" + dateString;
         const url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
                     + key
-                    + itemPerPage
                     + targetDt
+
         // let item_int = 20
-    
+        // const url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json"
+        //             + key
+        //             + itemPerPage
+
         const res = await fetch(url)
             .then(response=>response.json())
             .then(function(msg){
                 console.log(msg)
+                // return [...msg.movieListResult.movieList]
                 return [...msg.boxOfficeResult.dailyBoxOfficeList]
             });
 

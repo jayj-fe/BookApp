@@ -5,8 +5,8 @@ module.exports = {
     mode: "development",
 
     output: {
-        path: path.join(__dirname, "/dist"),
-        filename: "index.bundle.js",
+        path: path.join(__dirname, "/docs"),
+        filename: "index.js",
     },
 
     devServer: {

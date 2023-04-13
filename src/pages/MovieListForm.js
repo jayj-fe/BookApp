@@ -9,7 +9,7 @@ function MovieListForm({ movieList }) {
             <ul>
             { movieList && movieList.map( item => (
                 <li key={item.movieCd}>
-                    <Link to="/view">{item.movieNm}</Link>
+                    <Link to="/view/:key" state={item.movieCd}>{item.movieNm}</Link>
                 </li>
             )) }
             </ul>

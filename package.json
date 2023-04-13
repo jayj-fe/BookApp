@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production && cp docs/index.html docs/404.html"
   },
   "keywords": [],
   "author": "",
