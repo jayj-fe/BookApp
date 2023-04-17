@@ -9,8 +9,8 @@ function App() {
     <section className={styles.app}>
         <Routes>
             <Route path="/" element={<BookList />}></Route>
-            <Route path="/MovieApp" element={<BookList />}></Route>
-            {/* <Route path="/MovieApp/view/:key" element={<BookView />}></Route> */}
+            <Route path="/BookApp" element={<BookList />}></Route>
+            {/* <Route path="/BookApp/view/:key" element={<BookView />}></Route> */}
         </Routes>
     </section>
     )
