@@ -1,0 +1,7 @@
+@import './common.css';
+
+.app{
+    min-height:100vh;
+    background:#333;
+    color:#fff;
+}

@@ -1,0 +1,9 @@
+.listForm{padding:10px 30px 30px}
+.listCount{text-align:right}
+
+.listItemArea{display:flex;margin-top:10px;flex-wrap:wrap}
+.listItem{display:inline-block;width:50%;padding:10px}
+.listItem div{border:1px solid #fff}
+.listItem img{width:100%}
+
+.listNodata{display:block;width:100%;text-align:center;font-size:16px;font-weight:500;}

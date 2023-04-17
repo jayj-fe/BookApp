@@ -1,14 +1,22 @@
 import React from "react"
+import styles from '../asset/css/Search.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { useState } from "react"
 
-function SearchForm() {
+function SearchForm( props ) {
+    const [serachInput, setSerachInput] = useState('');
+ 
+    const getValue = (e) => {
+        setSerachInput( e.target.value.toLowerCase() )
+        props.searchInputText(serachInput);
+    };
     return (
-        <section>
-            <select>
-                <option value='movieNm'>영화명</option>
-                <option value='directorNm'>감독명</option>
-            </select>
-            <input type="text" />
-            <button type="button">검색</button>
+        <section className={styles.searchForm}>
+            <div>
+                <input type="text" placeholder="검색어를 입력하세요" onKeyUp={getValue} />
+                <button type="button"><FontAwesomeIcon icon={solid("magnifying-glass")} style={{color: "#ffffff",}} /></button>
+            </div>
         </section>
     )
 }

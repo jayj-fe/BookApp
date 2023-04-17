@@ -1,26 +1,18 @@
 import React from "react"
-import { Route, Routes, Link } from 'react-router-dom';
-import Search from './common/Search';
-import MovieList from './pages/MovieList';
-import MovieView from './pages/MovieView';
+import { Route, Routes } from 'react-router-dom';
+import BookList from './pages/BookList';
+import styles from './asset/css/App.module.css';
+// import BookView from './pages/BookView';
 
 function App() {
-    
     return (
-    <div>
-        <header>
-            <nav>
-                <Link to="/MovieApp">Home</Link>&nbsp;&nbsp;
-            </nav>
-
-            <Search />
-        </header>
-
+    <section className={styles.app}>
         <Routes>
-            <Route path="/MovieApp" element={<MovieList />}></Route>
-            <Route path="/MovieApp/view/:key" element={<MovieView />}></Route>
+            <Route path="/" element={<BookList />}></Route>
+            <Route path="/MovieApp" element={<BookList />}></Route>
+            {/* <Route path="/MovieApp/view/:key" element={<BookView />}></Route> */}
         </Routes>
-    </div>
+    </section>
     )
 }
 

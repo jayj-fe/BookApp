@@ -12,6 +12,13 @@ module.exports = {
     devServer: {
         port: 3000,
         liveReload: true,
+        proxy: {
+            "/api" : {
+              target: "https://openapi.naver.com",
+              pathRewrite: {"/api": "/"},
+              changeOrigin: true
+            }
+        }
     },
 
     module: {
@@ -24,10 +31,10 @@ module.exports = {
                 },
             },
             {
-                test: /\.scss$/,
-                use: ["style-loader", "css-loader", 'sass-loader'],
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
                 exclude: /nodeModules/
-            },
+            }
         ],
     },
 
