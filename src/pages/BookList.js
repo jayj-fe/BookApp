@@ -12,8 +12,9 @@ function BookList() {
     const searchList = (text) => {
         console.log(text)
         setSearchText(text);
-
-        useAxios('/api/v1/search/book.json', searchText).then( (res) => {
+        
+        const url = window.location.hostname === 'localhost' ? '/api/v1/search/book.json' : '/v1/search/book.json';
+        useAxios(url, searchText).then( (res) => {
             // console.log(res)
 
             setBookLists(res);
