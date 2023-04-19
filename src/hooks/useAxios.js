@@ -1,6 +1,6 @@
 import axios from "axios"
 
-async function useAxios( targetUrl, prop, startInt = 1 ) {
+async function useAxios( targetUrl, prop, displayInt = 1 ) {
     const id_key = '8IiMl1maLyiMIr5jFKMB';
     const sercet_key = 'vQpeLNtwWZ';
 
@@ -9,7 +9,7 @@ async function useAxios( targetUrl, prop, startInt = 1 ) {
             {
                 params: {
                     query: prop,
-                    start: startInt
+                    display: displayInt
                 },
                 headers: {
                 "X-Naver-Client-Id": id_key,
@@ -21,7 +21,7 @@ async function useAxios( targetUrl, prop, startInt = 1 ) {
 
             return {
                 data : response.data.items,
-                pageIdx : startInt
+                pageIdx : displayInt
             }
         });
 

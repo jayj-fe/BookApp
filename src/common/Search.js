@@ -5,7 +5,7 @@ function Search( props ) {
     // seacrh 기능
 
     let typingTimer;
-    const doneTypingInterval = 300;
+    const doneTypingInterval = 400;
     const [serachInput, setSerachInput] = useState('');
     const [inputele, setInputele] = useState('');
 
