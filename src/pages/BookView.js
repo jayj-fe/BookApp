@@ -3,9 +3,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import BookViewForm from './BookViewForm';
 
 function BookView() {
+    
     const [ bookInfo, setbookInfo ] = useState([]);
     const location = useLocation();
 
+    // console.log(location);
     const bookCd = location.state;
 
     // console.log(bookCd);

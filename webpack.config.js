@@ -5,11 +5,13 @@ module.exports = {
     mode: "development",
 
     output: {
+        publicPath: '/',
         path: path.join(__dirname, "/docs"),
         filename: "index.js",
     },
 
     devServer: {
+        historyApiFallback:true,
         port: 3000,
         liveReload: true,
         proxy: {

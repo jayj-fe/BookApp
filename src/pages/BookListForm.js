@@ -8,15 +8,18 @@ function BookListForm({bookLists}) {
     }
 
     // console.log(bookLists);
+    let count = 0;
+
+    count = count + bookLists.length;
     
     return (
         <section className={styles.listForm}>
-            <p className={styles.listCount}>{bookLists.length}개가 검색되었습니다.</p>
+            <p className={styles.listCount}>{count}개가 검색되었습니다.</p>
             <ul className={styles.listItemArea}>
                 { bookLists.length > 0 ? 
                     bookLists && bookLists.map( item => (
                         <li key={item.isbn} className={styles.listItem}>
-                            <Link to="/BookApp/view/:key" state={item}>
+                            <Link to={`/BookApp/view/${item.isbn}`} state={ item } >
                                 <div className={styles.itemImg}>
                                     <img src={item.image} alt="" />
                                 </div>

@@ -13,16 +13,24 @@ function BookList() {
         // console.log(text);
         setSearchText(text);
         
-        useAxios('/api/v1/search/book.json', text, 1).then( (res) => {
-            // console.log(res)
-
-            setBookLists(res.data);
-            // console.log(res.pageIdx)
+        if(text === ''){
+            setBookLists([]);
             setPageHistory({
                 idx : 1,
-                searchTxt : searchText
+                searchTxt : text
             })
-        });
+        }else{
+            useAxios('/api/v1/search/book.json', text, 1).then( (res) => {
+                // console.log(res)
+    
+                setBookLists(res.data);
+                // console.log(res.pageIdx)
+                setPageHistory({
+                    idx : 1,
+                    searchTxt : searchText
+                })
+            });
+        }
     }
 
     // useEffect(() => {
