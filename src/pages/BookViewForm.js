@@ -1,4 +1,7 @@
 import React from "react"
+import styles from '../asset/css/View.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function BookViewForm(props) {
     
@@ -12,15 +15,19 @@ function BookViewForm(props) {
     }
 
     return (
-        <section>
-            <div>
-                <button type="button" onClick={getBack}>뒤로가기</button>
-                <a href={bookInfo.link} target="_blank">쇼핑하러가기</a>
+        <section className={styles.viewForm}>
+            <div className={styles.viewHeader}>
+                <button type="button" onClick={getBack}>
+                    <FontAwesomeIcon icon={solid("reply")} style={{color: "#ffffff",}} />
+                </button>
+                <a href={bookInfo.link} target="_blank">
+                    <FontAwesomeIcon icon={solid("cart-shopping")} style={{color: "#ffffff",}} />
+                    </a>
             </div>
-            <div>
+            <div className={styles.viewImgArea}>
                 <img src={bookInfo.image} alt="" />
             </div>
-            <div>
+            <div className={styles.viewInfoArea}>
                 <strong>{bookInfo.title}</strong>
                 <dl>
                     <dt>지은이</dt>
@@ -36,7 +43,7 @@ function BookViewForm(props) {
                     <dd>{bookInfo.publisher}</dd>
                     
                     <dt>간략소개</dt>
-                    <dd>{bookInfo.description}</dd>
+                    <dd className={styles.full_size}>{bookInfo.description}</dd>
                 </dl>
             </div>
         </section>

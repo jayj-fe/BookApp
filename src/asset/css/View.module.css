@@ -1,0 +1,21 @@
+.viewForm{display:flex;flex-wrap:wrap;padding:30px;max-width:1200px;margin:0 auto;justify-content: space-around;}
+
+.viewHeader{display:block;width:100%}
+
+.viewHeader button,
+.viewHeader a{display:inline-block;margin-right:10px;font-size:20px}
+
+.viewInfoArea{width:100%;margin-top:20px}
+.viewInfoArea strong{display:block;padding-bottom:3px;margin-bottom:10px;font-weight:500;font-size:20px}
+.viewInfoArea dl{display:flex;flex-wrap:wrap;justify-content: space-between;}
+.viewInfoArea dl dt,
+.viewInfoArea dl dd{margin-top:5px;font-weight:500}
+.viewInfoArea dl dt{width:80px;border-bottom:1px solid #777}
+.viewInfoArea dl dd{width:calc( 100% - 100px );padding-left:10px;color:#aaa}
+.viewInfoArea dl dd.full_size{width:100%;padding:0}
+
+@media (min-width: 768px) {
+    .viewImgArea{width:40%}
+    .viewImgArea img{width: 100%;}
+    .viewInfoArea{width:55%}
+}
