@@ -6,7 +6,7 @@ import { useState } from "react"
 
 function SearchForm( props ) {
     const [serachInput, setSerachInput] = useState('');
- 
+
     const getValue = (e) => {
         setSerachInput( e.target.value.toLowerCase() )
         props.searchInputText(serachInput);

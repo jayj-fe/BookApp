@@ -2,7 +2,7 @@ import React from "react"
 import { Route, Routes } from 'react-router-dom';
 import BookList from './pages/BookList';
 import styles from './asset/css/App.module.css';
-// import BookView from './pages/BookView';
+import BookView from './pages/BookView';
 
 function App() {
     return (
@@ -10,7 +10,7 @@ function App() {
         <Routes>
             <Route path="/" element={<BookList />}></Route>
             <Route path="/BookApp" element={<BookList />}></Route>
-            {/* <Route path="/BookApp/view/:key" element={<BookView />}></Route> */}
+            <Route path="/BookApp/view/:key" element={<BookView />}></Route>
         </Routes>
     </section>
     )

@@ -2,7 +2,7 @@ import React from "react"
 import Search from '../common/Search';
 import BookListForm from './BookListForm';
 import useAxios from '../hooks/useAxios';
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 function BookList() {
     // List 기능
@@ -20,9 +20,9 @@ function BookList() {
         });
     }
 
-    useEffect(() => {
-        // console.log(bookLists);
-    });
+    // useEffect(() => {
+    //     // console.log(bookLists);
+    // });
 
     return (
         <div>

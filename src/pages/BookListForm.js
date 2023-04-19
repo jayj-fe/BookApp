@@ -1,5 +1,5 @@
 import React from "react"
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from '../asset/css/List.module.css';
 
 function BookListForm({bookLists}) {
@@ -16,12 +16,12 @@ function BookListForm({bookLists}) {
                 { bookLists.length > 0 ? 
                     bookLists && bookLists.map( item => (
                         <li key={item.isbn} className={styles.listItem}>
-                            <div>
-                                <img src={item.image} alt="" />
+                            <Link to="/BookApp/view/:key" state={item}>
+                                <div className={styles.itemImg}>
+                                    <img src={item.image} alt="" />
+                                </div>
                                 <strong>{item.title}</strong>
-                                <p>{item.author}</p>
-                                {/* <Link to="/MovieApp/view/:key" state={item.movieCd}>{item.title}</Link> */}
-                            </div>
+                            </Link>
                         </li>
                     ))
                 

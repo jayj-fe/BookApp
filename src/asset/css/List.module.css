@@ -3,7 +3,19 @@
 
 .listItemArea{display:flex;margin-top:10px;flex-wrap:wrap}
 .listItem{display:inline-block;width:50%;padding:10px}
-.listItem div{border:1px solid #fff}
-.listItem img{width:100%}
+.listItem>a{position:relative;border-radius:13px;overflow:hidden;background:rgba(255,255,255,0.1);}
+.itemImg{position:relative;width:100%;height:0;padding-bottom:100%}
+.itemImg img{position:absolute;top:50%;left:50%;width:auto;height:80%;transform: translate(-50%, -50%);}
+.listItem strong{display:block;position:absolute;bottom:0;right:0;background:rgba(0,0,0,0.5);padding: 5px 10px;}
 
-.listNodata{display:block;width:100%;text-align:center;font-size:16px;font-weight:500;}
+.listNodata{display:block;width:100%;line-height:30vh;text-align:center;font-size:16px;font-weight:500;}
+
+@media (min-width: 768px) {
+    .listItem{width:33.33%}
+}
+@media (min-width: 1024px) {
+    .listItem{width:25%}
+}
+@media (min-width: 1300px) {
+    .listItem{width:20%}
+}
