@@ -7,7 +7,7 @@ function BookListForm({bookLists}) {
         bookLists = [];
     }
 
-    console.log(bookLists);
+    // console.log(bookLists);
     
     return (
         <section className={styles.listForm}>

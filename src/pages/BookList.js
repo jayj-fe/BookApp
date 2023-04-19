@@ -1,22 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 import Search from '../common/Search';
 import BookListForm from './BookListForm';
 import useAxios from '../hooks/useAxios';
-import { useState } from "react"
 
 function BookList() {
     // List 기능
+    const [pageHistory, setPageHistory] = useState({});
     const [searchText, setSearchText] = useState('');
     const [bookLists, setBookLists] = useState([]);
 
     const searchList = (text) => {
-        console.log(text)
+        // console.log(text);
         setSearchText(text);
         
-        useAxios('/api/v1/search/book.json', searchText).then( (res) => {
+        useAxios('/api/v1/search/book.json', text, 1).then( (res) => {
             // console.log(res)
 
-            setBookLists(res);
+            setBookLists(res.data);
+            // console.log(res.pageIdx)
+            setPageHistory({
+                idx : 1,
+                searchTxt : searchText
+            })
         });
     }
 
@@ -26,7 +31,7 @@ function BookList() {
 
     return (
         <div>
-            <Search searchText={searchList} />
+            <Search searchText={searchList} pageHistory={pageHistory} />
             <BookListForm bookLists={bookLists} />
         </div>
     )
