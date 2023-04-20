@@ -6,7 +6,7 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 function BookViewForm(props) {
     
     const bookInfo = props.bookInfo
-    // console.log(bookInfo);
+    console.log(bookInfo);
     // console.log(goBack);
 
     const getBack = () =>{

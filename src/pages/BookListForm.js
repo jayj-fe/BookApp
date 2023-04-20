@@ -26,7 +26,7 @@ function BookListForm(props) {
                         { bookLists && bookLists.map( item => (
                             <li key={item.isbn} className={styles.listItem}>
                                 {/* <button type="button" className={styles.itemLink} onClick={pageMove(`/BookApp/view/${item.isbn}`, { item })}> */}
-                                <button type="button" className={styles.itemLink} onClick={()=> pageMove(`/BookApp/view/${item.isbn}`, { item })}>
+                                <button type="button" className={styles.itemLink} onClick={()=> pageMove(`/BookApp/view/${item.title}`, { item })}>
                                     <div className={styles.itemImg}>
                                         <img src={item.image} alt="" />
                                     </div>
