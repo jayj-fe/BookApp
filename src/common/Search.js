@@ -19,6 +19,7 @@ function Search( props ) {
     };
 
     const getValue = () => {
+        inputele.blur()
         const typing = inputele.value;
         // console.log(typing);
         setSerachInput(typing);

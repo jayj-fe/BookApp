@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
+import { useNavigate } from 'react-router-dom';
 import Search from '../common/Search';
 import BookListForm from './BookListForm';
 import useAxios from '../hooks/useAxios';
@@ -9,32 +10,25 @@ function BookList() {
     const [searchText, setSearchText] = useState('');
     const [obsele, setObsele] = useState('');
     const [bookLists, setBookLists] = useState([]);
-
-    const obsRef = useRef();
+    
+    const navi = useNavigate();
     const preventRef = useRef(true); //옵저버 중복 실행 방지
     const endRef = useRef(false); //모든 글 로드 확인
 
     const axiosCallEvent = (text, pageIdx) => {
         useAxios('/api/v1/search/book.json', text, pageIdx).then( (res) => {
-            // console.log(res)
-
-            // console.log(res.pageIdx)
-            setPageHistory({
+            const datas = {
                 idx : pageIdx,
                 searchTxt : text
-            })
-            preventRef.current = true;
-            console.log(pageIdx);
+            }
 
-            // if(calltype == 'load'){
-                // setBookLists(res.data);
-            // }
-
+            setPageHistory(datas)
             setBookLists(res.data);
+            sessionStorage.removeItem("historyData");
+            preventRef.current = true;
         });
     }
     const searchList = (text) => {
-        // console.log(text);
         setSearchText(text);
         
         if(text === ''){
@@ -44,7 +38,10 @@ function BookList() {
                 searchTxt : text
             })
         }else{
-            axiosCallEvent(text, 10);
+            if(!endRef.current && preventRef.current){
+                preventRef.current = false;
+                axiosCallEvent(text, 10);
+            }
         }
     }
 
@@ -53,6 +50,7 @@ function BookList() {
     }
 
     const obsHandler = ((entries) => {
+        console.log(3)
         // console.log(entries);
         const target = entries[0];
         // console.log(endRef)
@@ -67,6 +65,22 @@ function BookList() {
             
         }
     });
+    
+    const pageMove = (linkUrl, stateProp) => {
+        // console.log(pageHistory)
+        sessionStorage.setItem("historyData", JSON.stringify(pageHistory));
+        navi(linkUrl, { state: stateProp.item })
+    }
+
+    useEffect(()=> {
+        const historyData = JSON.parse(sessionStorage.getItem("historyData"));
+        // console.log(historyData);
+        if(historyData !== null){
+            console.log('실행')
+            console.log(historyData);
+            axiosCallEvent(historyData.searchTxt, historyData.idx);
+        }
+    }, [])
 
     useEffect(()=> {
         const observer = new IntersectionObserver(obsHandler, { threshold : 0.5 });
@@ -78,7 +92,7 @@ function BookList() {
     return (
         <div>
             <Search searchText={searchList} />
-            <BookListForm bookLists={bookLists} obsElem={obsElem}/>
+            <BookListForm bookLists={bookLists} obsElem={obsElem} pageMove={pageMove} />
         </div>
     )
 }

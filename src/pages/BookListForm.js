@@ -1,9 +1,7 @@
 import React, { useRef,useEffect } from "react"
-import { Link } from 'react-router-dom';
 import styles from '../asset/css/List.module.css';
 
 function BookListForm(props) {
-    // console.log(props)
     const bookLists = props.bookLists;
     const obsRef = useRef();
 
@@ -11,6 +9,10 @@ function BookListForm(props) {
         bookLists = [];
     }
     
+    const pageMove = (linkUrl, stateProp) =>{
+        props.pageMove(linkUrl, stateProp)
+    }
+
     useEffect(() => {
         props.obsElem(obsRef);
     });
@@ -23,12 +25,13 @@ function BookListForm(props) {
                     ? <>
                         { bookLists && bookLists.map( item => (
                             <li key={item.isbn} className={styles.listItem}>
-                                <Link to={`/BookApp/view/${item.isbn}`} state={ item } >
+                                {/* <button type="button" className={styles.itemLink} onClick={pageMove(`/BookApp/view/${item.isbn}`, { item })}> */}
+                                <button type="button" className={styles.itemLink} onClick={()=> pageMove(`/BookApp/view/${item.isbn}`, { item })}>
                                     <div className={styles.itemImg}>
                                         <img src={item.image} alt="" />
                                     </div>
                                     <strong>{item.title}</strong>
-                                </Link>
+                                </button>
                             </li>
                         ))}
                         <li ref={obsRef}>&nbsp;</li>
