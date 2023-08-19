@@ -3,13 +3,18 @@
 React.js로 만든 도서 검색 앱 프로젝트입니다.<br>
 React.js로 개발하고 Naver Api를 이용하여 검색기능을 구현하였습니다.
 
+<br />
+
 ## Technology Stack
 
 - React.js, Axios, HTML, SCSS, netlify
 
+<br />
+
 ## URL
 [https://jayj-book-app.netlify.app/](https://https://jayj-book-app.netlify.app//)
 
+<br />
 
 ## 아래와 같은 이슈가 있었습니다.
 
